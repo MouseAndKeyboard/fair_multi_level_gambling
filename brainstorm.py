@@ -66,7 +66,7 @@ if __name__ == "__main__":
     # for sub_human in lisbon.node.descendants:
     #     print(sub_human)
 
-    lisbon.balance = 1000 # im rich
+    lisbon.balance = 300 # im rich
     environment.buy_spins(lisbon, 10)
     
     while True:
@@ -76,3 +76,27 @@ if __name__ == "__main__":
             print('GAINZZZZZZ@@@!!!!!')
         else:
             print('loser, try again')
+        print(f'ur cash {lisbon.balance} ur spins {lisbon.rolls_available}')
+        if (environment.calculate_spin_cost(lisbon) > lisbon.balance):
+            # can't afford
+            print('ur out of cash buddy, sux 2 be u')
+            break
+        if (lisbon.rolls_available == 0):
+            # out of rolls
+            buymore = input('BUY mORE SPINS??!! (y/n)')
+            if buymore == 'y':
+                
+                hm = int(input('how many?'))
+                
+                if (environment.calculate_spin_cost(lisbon) * hm > lisbon.balance):
+                    # can't afford
+                    print('ur out of cash buddy, sux 2 be u')
+                    break
+                else:
+                    environment.buy_spins(lisbon, hm)
+                    print('purchase complete')
+            else:
+                print('okay, bye')
+                break
+
+        
