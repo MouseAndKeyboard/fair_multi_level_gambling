@@ -63,10 +63,16 @@ if __name__ == "__main__":
     cpt_locke = User(invitee=voncrub)
     plebian = User(invitee=cpt_locke)
 
-    for sub_human in lisbon.node.descendants:
-        print(sub_human)
+    # for sub_human in lisbon.node.descendants:
+    #     print(sub_human)
 
-
+    lisbon.balance = 1000 # im rich
     environment.buy_spins(lisbon, 10)
     
-    
+    while True:
+        input('roll')
+        result = environment.spin(lisbon)
+        if result:
+            print('GAINZZZZZZ@@@!!!!!')
+        else:
+            print('loser, try again')
