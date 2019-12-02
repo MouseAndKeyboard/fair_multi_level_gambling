@@ -10,9 +10,11 @@ from anytree import Node, RenderTree
 ROOT = Node("ROOT_USER")
 
 class Gambling_System(object):
+
     def __init__(self):
         self.BASE_SPIN_COST = 2.0
         self.BASE_SPIN_REWARD = 5.0
+
     def calculate_spin_cost(self, User):
         # cost could be based on how many people you've invited (maybe discount for people who invite lots)
 
@@ -22,6 +24,10 @@ class Gambling_System(object):
     def buy_spins(self, User, number_spins):
         # stub
         assert number_spins >= 0
+
+        cost = self.calculate_spin_cost(User) * number_spins
+        assert User.balance > cost
+        User.balance -= cost
         User.rolls_available += number_spins
 
     def spin(self, User):
